@@ -230,6 +230,91 @@
         animation: slideInLeft 1s ease-out 0.2s backwards;
       }
 
+      /* Architects Banner Styles */
+      .architects-banner {
+        position: relative;
+        display: inline-block;
+        background: #2d3748;
+        padding: 10px 10px;
+        border-radius: 10px;
+        margin: 10px 0;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: slideInLeft 1s ease-out 0.2s backwards;
+      }
+
+      .architects-banner h2 {
+        color: #ffffff !important;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        margin: 0;
+        position: relative;
+        z-index: 10;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .construction-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        opacity: 0.2;
+      }
+
+      .shape {
+        position: absolute;
+        background: var(--primary-yellow);
+        border-radius: 3px;
+      }
+
+      .shape-1 {
+        width: 30px;
+        height: 4px;
+        top: 15%;
+        left: 10%;
+        transform: rotate(45deg);
+        animation: constructionFloat 3s ease-in-out infinite;
+      }
+
+      .shape-2 {
+        width: 20px;
+        height: 20px;
+        top: 20%;
+        right: 15%;
+        border-radius: 50%;
+        animation: constructionFloat 3s ease-in-out infinite 0.5s;
+      }
+
+      .shape-3 {
+        width: 25px;
+        height: 3px;
+        bottom: 25%;
+        left: 20%;
+        transform: rotate(-30deg);
+        animation: constructionFloat 3s ease-in-out infinite 1s;
+      }
+
+      .shape-4 {
+        width: 15px;
+        height: 15px;
+        bottom: 20%;
+        right: 20%;
+        transform: rotate(45deg);
+        animation: constructionFloat 3s ease-in-out infinite 1.5s;
+      }
+
+      @keyframes constructionFloat {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+        50% {
+          transform: translateY(-5px) rotate(180deg);
+          opacity: 0.4;
+        }
+      }
+
       .hero-text p {
         color: rgba(255, 255, 255, 0.9);
         font-size: 1.1rem;
@@ -1227,6 +1312,13 @@
         letter-spacing: 2px;
       }
 
+      .director-qualifications {
+        font-size: 1.5rem;
+        font-weight: normal;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+
       /* Footer */
       footer {
         background: var(--dark-gray);
@@ -1383,7 +1475,7 @@
       <div class="nav-container">
         <div class="logo-container">
           <div class="logo">SANGAMAM INFRA CONSTRUCTIONS</div>
-          <div class="tagline">Build Your Dreams</div>
+          <div class="tagline">Building Your Dreams</div>
         </div>
         <ul class="nav-links">
           <li><a href="#home" class="nav-link active">Home</a></li>
@@ -1413,7 +1505,15 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1>SANGAMAM INFRA CONSTRUCTIONS</h1>
-          <h2>ARCHITECTS, ENGINEERS & BUILDERS</h2>
+          <div class="architects-banner">
+            <div class="construction-shapes">
+              <div class="shape shape-1"></div>
+              <div class="shape shape-2"></div>
+              <div class="shape shape-3"></div>
+              <div class="shape shape-4"></div>
+            </div>
+            <h2>ARCHITECTS, ENGINEERS & BUILDERS</h2>
+          </div>
           <br />
           <p>
             With years of expertise in construction consultancy, we transform
@@ -1694,32 +1794,6 @@
               </div>
             </div>
           </div>
-          <div class="gallery-item animate-on-scroll" data-image="twenty.png">
-            <img
-              src="images/twenty.png"
-              alt="Construction Project Twenty"
-              class="gallery-image"
-            />
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Project Twenty</h3>
-                <p>Superior Construction</p>
-              </div>
-            </div>
-          </div>
-          <div class="gallery-item animate-on-scroll" data-image="twentyone.png">
-            <img
-              src="images/twentyone.png"
-              alt="Construction Project Twenty One"
-              class="gallery-image"
-            />
-            <div class="gallery-overlay">
-              <div class="gallery-info">
-                <h3>Project Twenty One</h3>
-                <p>Architectural Marvel</p>
-              </div>
-            </div>
-          </div>
           </div>
         </div>
         </div>
@@ -1882,21 +1956,17 @@
 
       <div class="services-grid">
         <div class="service-card animate-on-scroll">
-          <div class="service-icon">🏛️</div>
-          <h3>Structural Stability Certification</h3>
+          <div class="service-icon">📐</div>
+          <h3>Structural Design</h3>
           <p>
-            Professional structural assessment and certification services to
-            ensure building safety, compliance, and structural integrity
-            verification.
+            Comprehensive structural design services including analysis, calculations, and detailed drawings for safe and efficient building structures.
           </p>
         </div>
         <div class="service-card animate-on-scroll">
-          <div class="service-icon">🔧</div>
-          <h3>Structural Rehabilitation</h3>
+          <div class="service-icon">🏛️</div>
+          <h3>Structural Stability Certification & Rehabilitation</h3>
           <p>
-            Expert structural repair and strengthening services for existing
-            buildings, including retrofitting and restoration of damaged
-            structures.
+            Professional structural assessment, certification services, and expert repair solutions for existing buildings including retrofitting, strengthening, and restoration of damaged structures.
           </p>
         </div>
 
@@ -1934,10 +2004,9 @@
         </div> -->
         <div class="service-card animate-on-scroll">
           <div class="service-icon">💰</div>
-          <h3>Cost Optimization</h3>
+          <h3>Costing and Estimation</h3>
           <p>
-            Strategic cost management without compromising on quality or project
-            specifications.
+            Accurate project cost estimation and detailed financial planning to help you budget effectively for your construction projects.
           </p>
         </div>
         <!-- <div class="service-card animate-on-scroll">
@@ -2145,8 +2214,10 @@
       </div>
       <div class="director-section animate-on-scroll">
         <p class="director-title">Under the Leadership of</p>
-        <p class="director-name">Arivazhagan Sivalingam</p>
-        <p class="director-title">Director</p>
+        <p class="director-name">Arivazhagan Sivalingam, <span class="director-qualifications">M.E.,(Struct) MIE (India), PMP</span></p>
+        <br>
+        <p class="director-title">Consulting Structural Engineer</p>
+        <p class="director-title">Regd Chartered Engineer (M-1767733)</p>
       </div>
     </section>
 
@@ -2227,10 +2298,10 @@
     <footer>
       <div class="footer-content">
         <div class="social-links">
-          <a href="#" title="Facebook">f</a>
+          <a href="https://www.facebook.com/ariv.azhagan.505" title="Facebook" target="_blank">f</a>
           <a href="#" title="Twitter">t</a>
-          <a href="#" title="LinkedIn">in</a>
-          <a href="#" title="Instagram">ig</a>
+          <a href="https://www.linkedin.com/in/arivazhagan-s-80747b3b/" title="LinkedIn" target="_blank">in</a>
+          <a href="https://www.instagram.com/azhaganariv/" title="Instagram" target="_blank">ig</a>
         </div>
         <p>
           &copy; 2024 SANGAMAM INFRA CONSTRUCTIONS PRIVATE LIMITED. All rights

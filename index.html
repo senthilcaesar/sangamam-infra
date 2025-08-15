@@ -1480,6 +1480,13 @@
         }
       }
     </style>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("ohWJ8OnvNcFE2oULk"); // Replace with your EmailJS public key
+      })();
+    </script>
   </head>
   <body>
     <!-- Parallax Background -->
@@ -2505,11 +2512,42 @@
         });
       });
 
-      // Form submission
+      // EmailJS Form submission
       document.getElementById("contactForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Thank you for your message! We will get back to you soon.");
-        e.target.reset();
+        
+        // Get form data
+        const formData = new FormData(e.target);
+        const templateParams = {
+          from_name: formData.get('name'),
+          from_email: formData.get('email'),
+          phone: formData.get('phone'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+          to_email: 'azhagans@gmail.com'
+        };
+
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-btn span');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        document.querySelector('.submit-btn').disabled = true;
+
+        // Send email using EmailJS
+        emailjs.send('service_pob8h1b', 'template_42sfp47', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+          }, function(error) {
+            console.log('FAILED...', error);
+            alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+          })
+          .finally(function() {
+            // Restore button state
+            submitBtn.textContent = originalText;
+            document.querySelector('.submit-btn').disabled = false;
+          });
       });
 
       // Scroll animations

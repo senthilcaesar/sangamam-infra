@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SANGAMAM INFRA CONSTRUCTIONS - Building Your Dreams</title>
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet">
     <style>
       * {
         margin: 0;
@@ -216,10 +220,16 @@
       }
 
       .hero-text h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-family: 'Exo 2', sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         color: var(--white);
-        margin-bottom: 20px;
         line-height: 1.2;
+        position: relative;
+        margin-top: -50px; /* Moves the title up */
+        display: block;
         animation: slideInLeft 1s ease-out;
       }
 
@@ -340,39 +350,6 @@
         animation: slideInLeft 1s ease-out 0.6s backwards;
       }
 
-      .btn {
-        padding: 15px 35px;
-        border: none;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .btn-primary {
-        background: var(--primary-yellow);
-        color: var(--primary-blue);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: var(--white);
-        border: 2px solid var(--white);
-      }
-
-      .btn-secondary:hover {
-        background: var(--white);
-        color: var(--primary-blue);
-      }
-
       .hero-visual {
         position: relative;
         overflow: hidden;
@@ -407,6 +384,7 @@
         opacity: 0;
         /* Adjustable image sizing */
         min-width: 250px;
+        /* max-width: 100%; */ /* This rule is redundant as width: 100% already makes it fill the container */
         max-width: 100%;
       }
 
@@ -1487,6 +1465,54 @@
         emailjs.init("ohWJ8OnvNcFE2oULk"); // Replace with your EmailJS public key
       })();
     </script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS Configuration for custom colors and animations -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary-yellow': '#ffd700',
+              'primary-blue': '#0056b3',
+              'primary-gray': '#4a5568',
+              'light-gray': '#e2e8f0',
+              'dark-gray': '#2d3748',
+              'white': '#ffffff',
+              'accent-orange': '#ff6b35',
+            },
+            keyframes: {
+              slideInLeft: {
+                'from': {
+                  opacity: '0',
+                  transform: 'translateX(-50px)'
+                },
+                'to': {
+                  opacity: '1',
+                  transform: 'translateX(0)'
+                },
+              },
+              'pulse-bright': {
+                '0%, 100%': { 
+                  opacity: '1',
+                  boxShadow: '0 0 0 0 rgba(255, 215, 0, 0.7)'
+                },
+                '70%': { 
+                  opacity: '1',
+                  boxShadow: '0 0 0 10px rgba(255, 215, 0, 0)'
+                },
+              }
+              // Add other custom keyframes here if needed
+            },
+            animation: {
+              slideInLeft: 'slideInLeft 1s ease-out 0.6s backwards',
+              // Add other custom animations here if needed
+            },
+          }
+        }
+      }
+    </script>
+
   </head>
   <body>
     <!-- Parallax Background -->
@@ -1548,8 +1574,8 @@
             every construction journey.
           </p>
           <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-secondary">Get Quote</a>
+            <a href="#projects" class="inline-block rounded-full bg-primary-yellow px-8 py-4 text-base font-semibold text-primary-blue no-underline shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-primary-yellow/40 animate-[pulse-bright_2s_infinite]">View Projects</a>
+            <a href="#contact" class="inline-block rounded-full border-2 border-white bg-transparent px-8 py-4 text-base font-semibold text-white no-underline transition-all duration-300 hover:bg-white hover:text-primary-blue">Get Quote</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -2218,7 +2244,7 @@
       });
 
       // Handle CTA buttons (View Projects, Get Quote)
-      document.querySelectorAll(".btn").forEach((btn) => {
+      document.querySelectorAll(".cta-buttons a").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const href = btn.getAttribute("href");
           if (href && href.startsWith("#")) {
